@@ -52,9 +52,14 @@ public class House extends Building implements HouseRequirements {
    * Moves a student into the house and adds them to the residents list.
    *
    * @param s the student moving in
+   * @param throws Runtime Exception if student is already in building
    */
   public void moveIn(Student s){
-    residents.add(s);
+    if(this.residents.contains(s)) {
+      throw new RuntimeException("This student is already in this building");
+    }
+    
+    this.residents.add(s);
   }
 
      /**

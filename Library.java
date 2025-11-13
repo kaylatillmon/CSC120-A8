@@ -1,4 +1,5 @@
 import java.util.Hashtable;
+import jdk.jshell.spi.ExecutionControl;
 /* This is a stub for the Library class */
 
 /**
@@ -83,13 +84,20 @@ public class Library extends Building implements LibraryRequirements{
      * Checks out a book
      *
      * @param title the title to check out
+     * @param exception throws a runtime exception if book is not available to check out because it isn't in the collection or because it is already in use. 
+
      */
   
     public void checkOut(String title){
-      if (this.collection.containsKey(title)){
-        this.collection.replace(title, false);
+      if (this.collection.containsKey(title) == false){
+        throw new RuntimeException("Cannot Check out this title because this does not exist in our collection");
       }
-    }
+      if(this.collection.get(title) == false){
+        throw new RuntimeException("Cannot check out this title because it is already in use");
+      }
+      this.collection.replace(title, false);
+      }
+
 
     /**
      * Returns a book

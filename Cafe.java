@@ -12,10 +12,17 @@ public class Cafe extends Building implements CafeRequirements {
      * @param name name of the cafe
      * @param address location of the cafe
      * @param nFloors number of floors in the cafe
+     * @param nCoffeeOunces the amount of coffee you order (size)
+     * @param nCreams amount of creams customer orders in a coffee
+     * @param nCups number of cups of coffee the order is
      */
 
     public Cafe(String name, String address, int nFloors) {
         super(name, address, nFloors);
+        this.nCoffeeOunces = 100;
+        this.nSugarPackets = 50;
+        this.nCreams = 50;
+        this.nCups = 30;
         System.out.println("You have built a cafe: ☕");
     }
 
@@ -29,18 +36,22 @@ public class Cafe extends Building implements CafeRequirements {
      */
 
     public void sellCoffee(int size, int nSugarPackets, int nCreams){
-        if (this.nCoffeeOunces < size){
+        if (this.nCoffeeOunces < size) {
             restock(100, 0, 0, 0);
         }
-        if (this.nSugarPackets < nSugarPackets){
+        
+        if (this.nSugarPackets < nSugarPackets) {
             restock(0, 75, 0, 0);
         }
-        if (this.nCreams < nCreams){
+    
+        if (this.nCreams < nCreams) {
             restock(0, 0, 80, 0);
         }
-        if (this.nCups < 1){
+        
+        if (this.nCups < 1) {
             restock(0, 0, 0, 30);
         }
+        
         this.nCoffeeOunces -= size;
         this.nSugarPackets -= nSugarPackets;
         this.nCreams -= nCreams;

@@ -89,6 +89,9 @@ public class Building {
         System.out.println("Available options at " + this.name + ":\n + enter() \n + exit() \n + goUp() \n + goDown()\n + goToFloor(n)");
     }
 
+
+
+
     public String toString() {
         return this.name + " is a " + this.nFloors + "-story building located at " + this.address + ".";
     }
